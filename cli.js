@@ -1,5 +1,5 @@
 require('dotenv').config()
-const { Sequelize, Model, DataTypes } = require('sequelize')
+const { Sequelize, Model, DataTypes, QueryTypes } = require('sequelize')
 const express = require('express')
 const app = express()
 
@@ -33,7 +33,7 @@ Blog.init({
   },
   likes: {
     type: DataTypes.INTEGER,
-    default: 0
+    defaultValue: 0
   }
 }, {
   sequelize,
@@ -46,3 +46,10 @@ const PORT = process.env.PORT || 3001
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`)
 })
+
+const main = async () => {
+  const blogs = await Blog.findAll()
+  blogs.map(blog => console.log(`${blog.dataValues.author}:${blog.dataValues.title}, ${blog.dataValues.likes} likes`));
+}
+
+main()
