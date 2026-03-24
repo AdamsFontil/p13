@@ -31,10 +31,8 @@ router.get('/:id', blogFinder, async (req, res) => {
 })
 
 router.put('/:id', blogFinder, async (req, res) => {
-  console.log('req.body---', req.body);
-  console.log('req.blog---', req.blog);
   req.blog.likes = req.body.likes
-  console.log('UPDATIING---', req.blog.toJSON());
+  console.log('UPDATED, NEW LIKES---', req.blog.toJSON());
   await req.blog.save()
   res.json(req.blog)
 })

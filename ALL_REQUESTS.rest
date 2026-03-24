@@ -1,4 +1,4 @@
-GET http://localhost:3002/api/blogs
+GET http://localhost:3002/api/blogs/3
 
 
 ###
@@ -8,7 +8,7 @@ Content-Type: application/json
 {
   "url": "noAuthor3.com",
   "title": "this WILL work hopefully for id3",
-  "likes": 9
+  "likes": 90
 }
 
 
