@@ -2,14 +2,15 @@ GET http://localhost:3002/api/blogs
 
 
 ###
-POST http://localhost:3002/api/blogs
+PUT http://localhost:3002/api/blogs/3
 Content-Type: application/json
 
 {
-  "url": "noAuthor2.com",
-  "title": "this WILL work"
+  "url": "noAuthor3.com",
+  "title": "this WILL work hopefully for id3",
+  "likes": 9
 }
 
 
 ###
-DELETE http://localhost:3002/api/blogs/2
+DELETE http://localhost:3002/api/blogs/5
