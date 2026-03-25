@@ -1,16 +1,29 @@
-GET http://localhost:3002/api/blogs/3
+GET http://localhost:3002/api/blogs
+
+###
+GET http://localhost:3002/api/blogs/35sdlksdklsdkl
 
 
 ###
-PUT http://localhost:3002/api/blogs/3
+PUT http://localhost:3002/api/blogs/2323230943
 Content-Type: application/json
 
 {
   "url": "noAuthor3.com",
-  "title": "this WILL work hopefully for id3",
-  "likes": 90
+  "title": "this WILL work hopefully for id3"
 }
 
 
 ###
 DELETE http://localhost:3002/api/blogs/5
+
+
+###
+POST http://localhost:3002/api/blogs/
+Content-Type: application/json
+
+{
+  "author": "NO TITLE",
+  "url": "noAuthor3.com",
+  "likes": 90
+}
