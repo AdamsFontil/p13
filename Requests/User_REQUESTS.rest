@@ -1,0 +1,21 @@
+GET http://localhost:3002/api/users
+
+###
+PUT http://localhost:3002/api/users/testing_Hash
+Content-Type: application/json
+
+{
+  "username": "hashUser11"
+}
+
+
+
+###
+POST http://localhost:3002/api/users/
+Content-Type: application/json
+
+{
+  "name": "HashUser",
+  "username": "testing_Hash",
+  "password": "testing101"
+}
