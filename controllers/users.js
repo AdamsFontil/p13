@@ -7,7 +7,7 @@ router.get('/', async (req, res) => {
   res.json(users)
 })
 
-router.post('/', async (req, res) => {
+router.post('/', async (req, res, next) => {
   const { username, name, password } = req.body
  console.log('what was received', username, name, password);
 
@@ -25,7 +25,7 @@ router.post('/', async (req, res) => {
     })
     res.status(201).json(user)
   } catch (error) {
-    return res.status(400).json({ error: error.message })
+    next(error)
   }
 })
 
@@ -57,5 +57,22 @@ router.get('/:id', async (req, res) => {
     res.status(404).end()
   }
 })
+
+const errorHandler = (error, request, response, next) => {
+  console.error(error.message)
+
+  if (error.name === 'CastError') {
+    return response.status(400).send({ error: 'malformatted id' })
+  } else if (error.name === 'SequelizeValidationError') { // if there are multiple validation errors
+    const messages = error.errors.map(err => err.message).join(', ')
+    return response.status(400).json({ error: messages })
+  } else if (error) {
+    return response.status(402).json({ error: `OTHER ERROR: ${error.message}` })
+  }
+
+  next(error)
+}
+
+router.use(errorHandler)
 
 module.exports = router

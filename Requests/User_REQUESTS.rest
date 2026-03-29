@@ -15,7 +15,7 @@ POST http://localhost:3002/api/users/
 Content-Type: application/json
 
 {
-  "name": "HashUser",
-  "username": "testing_Hash",
+  "name": "HashUser2",
+  "username": "testing_Hash2",
   "password": "testing101"
 }
