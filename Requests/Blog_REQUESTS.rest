@@ -1,7 +1,7 @@
 GET http://localhost:3002/api/blogs
 
 ###
-GET http://localhost:3002/api/blogs/35sdlksdklsdkl
+GET http://localhost:3002/api/blogs/10
 
 
 ###
@@ -15,7 +15,9 @@ Content-Type: application/json
 
 
 ###
-DELETE http://localhost:3002/api/blogs/5
+DELETE http://localhost:3002/api/blogs/8
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InNlY29uZFVzZXJAZ21haS5jb20iLCJpZCI6MywiaWF0IjoxNzc1MDU0NTg1fQ.vE0BnrBsNN21BZwjx7hE57GpvKTsZkZOyTCDIycmTpA
+
 
 
 ###
@@ -24,8 +26,8 @@ Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InNlY29uZFVzZXJAZ21haS5jb20iLCJpZCI6MywiaWF0IjoxNzc1MDU0NTg1fQ.vE0BnrBsNN21BZwjx7hE57GpvKTsZkZOyTCDIycmTpA
 
 {
-  "title": "Made by second user",
+  "title": "Testing one two four",
   "author": "user002",
   "url": "hashedpassOnly.com",
-  "likes": 900
+  "likes": 9
 }

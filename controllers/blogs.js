@@ -30,8 +30,6 @@ router.post('/', tokenExtractor, async (req, res) => {
     const blog = await Blog.create({ ...req.body, userId: user.id, date: new Date() })
     console.log('what is USER', user);
     console.log('what is BLOG', blog);
-    console.log('what is req', req);
-    console.log('what is res', res);
     res.json(blog)
   } catch(error) {
     return res.status(400).json({ error })
@@ -63,10 +61,22 @@ router.put('/:id', blogFinder, async (req, res) => {
 })
 
 
-router.delete('/:id', blogFinder, async (req, res) => {
+router.delete('/:id',tokenExtractor, blogFinder, async (req, res) => {
   console.log('deleting---', req.blog.toJSON());
-  await req.blog.destroy()
-  res.status(204).end()
+  try {
+    const user = await User.findByPk(req.decodedToken.id)
+    console.log('USER FOUND---', user.id);
+    console.log('BLOG ID', req.blog.userId);
+    if (user.id === req.blog.userId) {
+      console.log('MATCH FOUND--- DELETING BLOG NOW');
+      await req.blog.destroy()
+      res.status(204).end()
+    } else {
+      return res.status(401).json({ error: 'ONLY THE USER WHO MADE THE BLOG CAN DELETE IT' })
+    }
+  } catch (error) {
+    return res.status(400).json({ error })
+  }
 })
 
 
