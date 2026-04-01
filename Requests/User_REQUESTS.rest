@@ -1,7 +1,7 @@
-GET http://localhost:3002/api/users
+GET http://localhost:3001/api/users
 
 ###
-PUT http://localhost:3002/api/users/testing_Hash
+PUT http://localhost:3001/api/users/testing_Hash
 Content-Type: application/json
 
 {
@@ -11,7 +11,7 @@ Content-Type: application/json
 
 
 ###
-POST http://localhost:3002/api/users/
+POST http://localhost:3001/api/users/
 Content-Type: application/json
 
 {
