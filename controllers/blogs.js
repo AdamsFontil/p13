@@ -4,11 +4,20 @@ const jwt = require('jsonwebtoken')
 const { SECRET } = require('../util/config')
 
 router.get('/', async (req, res) => {
-  const blogs = await Blog.findAll()
+  const blogs = await Blog.findAll({
+    attributes: { exclude: ['userId'] },
+    include: {
+      model: User,
+      attributes: ['name', 'username']
+    }
+  })
   console.log(JSON.stringify(blogs, null, 2));
   console.log('TESTING TESTING');
   res.json(blogs)
 })
+
+
+
 
 const tokenExtractor = (req, res, next) => {
   const authorization = req.get('authorization')

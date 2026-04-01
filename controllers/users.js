@@ -5,12 +5,14 @@ const { User, Blog } = require('../models')
 
 router.get('/', async (req, res) => {
   const users = await User.findAll({
+    attributes: { exclude: ['id']},
     include: {
       model: Blog
     }
   })
   res.json(users)
 })
+
 
 router.post('/', async (req, res, next) => {
   const { username, name, password } = req.body
