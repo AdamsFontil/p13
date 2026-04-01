@@ -21,9 +21,11 @@ DELETE http://localhost:3002/api/blogs/5
 ###
 POST http://localhost:3002/api/blogs/
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InNlY29uZFVzZXJAZ21haS5jb20iLCJpZCI6MywiaWF0IjoxNzc1MDU0NTg1fQ.vE0BnrBsNN21BZwjx7hE57GpvKTsZkZOyTCDIycmTpA
 
 {
-  "author": "NO TITLE",
-  "url": "noAuthor3.com",
-  "likes": 90
+  "title": "Made by second user",
+  "author": "user002",
+  "url": "hashedpassOnly.com",
+  "likes": 900
 }

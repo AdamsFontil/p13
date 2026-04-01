@@ -15,7 +15,7 @@ POST http://localhost:3002/api/users/
 Content-Type: application/json
 
 {
-  "name": "HashUser2",
-  "username": "testing_Hash2",
-  "password": "testing101"
+  "name": "user002",
+  "username": "secondUser@gmai.com",
+  "password": "testing102"
 }
