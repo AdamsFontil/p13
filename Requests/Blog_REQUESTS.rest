@@ -23,7 +23,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InNlY
 ###
 POST http://localhost:3001/api/blogs/
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImRvY2tlcjJAZ21haS5jb20iLCJpZCI6MiwiaWF0IjoxNzc1MTMyOTYyfQ.4FDMqRALarMF-iYY9_55jQragKlLVhpRUreVKSx6hiU
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImRvY2tlcjJAZ21haS5jb20iLCJpZCI6MywiaWF0IjoxNzc1MTY0Mjc3fQ.qNziWpfcbe0uVwFUf5TBRqXDtq9AI6pQ0wXP5N_WCPI
 
 {
   "title": "second postgres blog",

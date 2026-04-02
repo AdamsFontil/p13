@@ -27,6 +27,14 @@ User.init({
   passwordHash: {
     type: DataTypes.STRING,
     allowNull: false
+  },
+  createdAt: {
+  type: DataTypes.DATE,
+  allowNull: true
+  },
+  updatedAt: {
+  type: DataTypes.DATE,
+  allowNull: true
   }
 }, {
   sequelize,
