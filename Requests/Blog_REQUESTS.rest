@@ -23,11 +23,13 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InNlY
 ###
 POST http://localhost:3001/api/blogs/
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImRvY2tlcjJAZ21haS5jb20iLCJpZCI6MywiaWF0IjoxNzc1MTY0Mjc3fQ.qNziWpfcbe0uVwFUf5TBRqXDtq9AI6pQ0wXP5N_WCPI
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImRvY2tlcjJAZ21haS5jb20iLCJpZCI6MSwiaWF0IjoxNzc1MTcyNzIxfQ.dp83z5htVov3F5D6sCAvSOQo7c--f4IZjrqbDR_BOB4
 
 {
   "title": "second postgres blog",
   "author": "docker",
   "url": "dockerexec1.com",
-  "likes": 19
+  "likes": 19,
+  "yearWritten": 2024
+
 }

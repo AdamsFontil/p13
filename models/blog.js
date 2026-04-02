@@ -27,12 +27,16 @@ Blog.init({
     defaultValue: 0
   },
   createdAt: {
-  type: DataTypes.DATE,
+  type: DataTypes.NOW,
   allowNull: true,
   },
   updatedAt: {
   type: DataTypes.DATE,
   allowNull: true
+  },
+  yearWritten: {
+    type: DataTypes.INTEGER,
+    allowNull: true
   }
 }, {
   sequelize,

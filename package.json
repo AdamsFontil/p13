@@ -12,6 +12,7 @@
   "scripts": {
     "start": "NODE_ENV=production node cli.js",
     "dev": "node --watch cli.js",
-    "test": "node --test --test-concurrency=1 tests/api_ch3.test.js"
+    "test": "node --test --test-concurrency=1 tests/api_ch3.test.js",
+    "migration:down": "node util/rollback.js"
   }
 }

@@ -41,13 +41,21 @@ const tokenExtractor = (req, res, next) => {
   next()
 }
 
-router.post('/', tokenExtractor, async (req, res) => {
+  router.post('/', tokenExtractor, async (req, res) => {
+  const currentYear = new Date().getFullYear();
   try {
     const user = await User.findByPk(req.decodedToken.id)
-    const blog = await Blog.create({ ...req.body, userId: user.id, date: new Date() })
-    console.log('what is USER', user);
-    console.log('what is BLOG', blog);
-    res.json(blog)
+    if (req.body.yearWritten >= 1991 && req.body.yearWritten <= currentYear) {
+      console.log('PROVIDED CORRECT YEAR', req.body.yearWritten);
+      const blog = await Blog.create({
+      ...req.body, updatedAt: new Date(),
+      userId: user.id
+      })
+      res.json(blog)
+    } else {
+      console.log('WRONG YEAR', req.body.year_written);
+      return res.status(402).json({ error: `Year book written must be between 1991 and ${currentYear}`})
+    }
   } catch(error) {
     return res.status(400).json({ error })
   }
