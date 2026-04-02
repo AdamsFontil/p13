@@ -9,7 +9,7 @@
     "sequelize": "^6.37.8"
   },
   "scripts": {
-    "start": "node cli.js",
+    "start": "NODE_ENV=production node cli.js",
     "dev": "node --watch cli.js",
     "test": "node --test --test-concurrency=1 tests/api_ch3.test.js"
   }
