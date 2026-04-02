@@ -1,12 +1,22 @@
 const Sequelize = require('sequelize')
 const { DATABASE_URL } = require('./config')
 
+// const sequelize = new Sequelize(DATABASE_URL, {
+//   dialectOptions: {
+//     ssl: {
+//       require: true,
+//       rejectUnauthorized: false
+//     }
+//   },
+// })
+
+
 const sequelize = new Sequelize(DATABASE_URL, {
   dialectOptions: {
-    ssl: {
+    ssl: process.env.NODE_ENV === 'production' ? {
       require: true,
       rejectUnauthorized: false
-    }
+    } : false
   },
 })
 

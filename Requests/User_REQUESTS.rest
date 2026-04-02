@@ -15,7 +15,7 @@ POST http://localhost:3001/api/users/
 Content-Type: application/json
 
 {
-  "name": "user002",
-  "username": "secondUser@gmai.com",
-  "password": "testing102"
+  "name": "postgresUser2",
+  "username": "docker2@gmai.com",
+  "password": "docker2"
 }

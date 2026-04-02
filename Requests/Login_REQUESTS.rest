@@ -8,6 +8,6 @@ POST http://localhost:3001/api/login
 Content-Type: application/json
 
 {
-  "username": "secondUser@gmai.com",
-  "password": "testing102"
+  "username": "docker2@gmai.com",
+  "password": "docker2"
 }

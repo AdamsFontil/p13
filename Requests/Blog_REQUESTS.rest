@@ -23,11 +23,11 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InNlY
 ###
 POST http://localhost:3001/api/blogs/
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InNlY29uZFVzZXJAZ21haS5jb20iLCJpZCI6MywiaWF0IjoxNzc1MDU0NTg1fQ.vE0BnrBsNN21BZwjx7hE57GpvKTsZkZOyTCDIycmTpA
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImRvY2tlcjJAZ21haS5jb20iLCJpZCI6MiwiaWF0IjoxNzc1MTMyOTYyfQ.4FDMqRALarMF-iYY9_55jQragKlLVhpRUreVKSx6hiU
 
 {
-  "title": "Testing one two four",
-  "author": "user002",
-  "url": "hashedpassOnly.com",
-  "likes": 9
+  "title": "second postgres blog",
+  "author": "docker",
+  "url": "dockerexec1.com",
+  "likes": 19
 }

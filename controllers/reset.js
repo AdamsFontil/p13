@@ -6,7 +6,8 @@ const router = require('express').Router()
 router.post('/', async (req, res) => {
   console.log('RESETING');
   try {
-    await sequelize.sync({ force: true });
+    await sequelize.drop()
+    await sequelize.sync()
     res.status(201).json('DB HAS BEEN RESET');
   } catch (error) {
     res.status(504).json({ error: 'Failed to reset DB' })
