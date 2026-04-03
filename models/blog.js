@@ -36,9 +36,22 @@ Blog.init({
   },
   yearWritten: {
     type: DataTypes.INTEGER,
-    allowNull: true
+    allowNull: true,
+    validate: {
+    min: {
+      args: [1991],
+      msg: "Year written must be after 1990"
+    },
+    max: {
+      args: [new Date().getFullYear()],
+      msg: `The year written cannot be after the current year of ${new Date().getFullYear()}`
+    }
   }
-}, {
+
+  }
+},
+
+  {
   sequelize,
   underscored: true,
   timestamps: false,
