@@ -5,14 +5,48 @@ const { User, Blog } = require('../models')
 
 router.get('/', async (req, res) => {
   const users = await User.findAll({
-    attributes: { exclude: ['passwordHash']},
-    include: {
-      model: Blog
+    attributes: { exclude: ['']},
+    include: [{
+      model: Blog,
+      attributes: ['title', 'author', 'likes', 'id']
+    },
+      {
+        model: Blog,
+        as: 'reading_list',
+        attributes: { exclude: [''] },
+        through: {
+          attributes: ['read', 'id', 'blog_id', 'user_id']
+        },
+        include: {
+          model: User,
+          attributes: ['name']
+        }
     }
+  ]
   })
   res.json(users)
 })
 
+router.get('/:id', async (req, res) => {
+  const user = await User.findByPk(req.params.id,
+    {
+      attributes: ['name', 'username'],
+      include: [{
+        model: Blog,
+        as: 'reading_list',
+        attributes: { exclude: ['userId', 'createdAt', 'updatedAt'] },
+        through: {
+          attributes: []
+        },
+      }]
+    }
+  )
+  if (user) {
+    res.json(user)
+  } else {
+    res.status(404).end()
+  }
+})
 
 router.post('/', async (req, res, next) => {
   const { username, name, password } = req.body
@@ -56,14 +90,7 @@ router.put('/:username', async (req, res) => {
   }
 });
 
-router.get('/:id', async (req, res) => {
-  const user = await User.findByPk(req.params.id)
-  if (user) {
-    res.json(user)
-  } else {
-    res.status(404).end()
-  }
-})
+
 
 const errorHandler = (error, request, response, next) => {
   console.error(error.message)
