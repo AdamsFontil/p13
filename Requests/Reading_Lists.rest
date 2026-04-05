@@ -9,13 +9,23 @@ Content-Type: application/json
 {
 
   "userId": 1,
-  "blogId": 2
+  "blogId": 1
 }
 
 
-###
+### Token of docker2@gmai.com
 PUT http://localhost:3001/api/readinglists/1
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImRvY2tlcjJAZ21haS5jb20iLCJpZCI6MywiaWF0IjoxNzc1MzU4OTk2fQ.ZXhTd7AjYfZ4lNXQfakrMVPLIB61Uu4AFl_Yfl_54EA
+
+{
+  "read": false
+}
+
+### Token of test1@example.com
+PUT http://localhost:3001/api/readinglists/1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3QxQGV4YW1wbGUuY29tIiwiaWQiOjEsImlhdCI6MTc3NTM2MDkzN30.v0Nm_nBtY-HCEvrfbBVhRPQd3iAdBmSnHVFrA4uU8M4
 
 {
   "read": true

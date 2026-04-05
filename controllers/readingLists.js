@@ -1,6 +1,6 @@
 const router = require('express').Router()
 const { Blog, User, UserReadingList } = require('../models')
-const { Sequelize } = require('sequelize');
+const tokenExtractor = require('../util/middleware')
 
 
 
@@ -35,7 +35,7 @@ router.get('/', async (req, res) => {
   res.json(readings)
 })
 
-router.put('/:id', async (req, res) => {
+router.put('/:id', tokenExtractor, async (req, res) => {
   console.log('CHANGING THINGS');
   const { id } = req.params
   if (req.body.read === undefined) {
@@ -46,16 +46,22 @@ router.put('/:id', async (req, res) => {
     if (!reading) {
       return res.status(404).json({ error: 'Reading not found, issue with finding entry from the provided ID'})
     }
+    if (reading.userId !== req.decodedToken.id) {
+      console.log('r.userid', reading.userId);
+      console.log('req.decodedToken.id', req.decodedToken.id);
+      return res.status(400).json({ error: 'Only the creator of reading list can modify it'})
+    }
     console.log('READING BEFORE', reading.dataValues);
     reading.read = req.body.read
     await reading.save()
     console.log('READING AFTER', reading.dataValues);
-    return res.status(201).json(reading)
+    return res.status(200).json(reading)
   } catch (error) {
     return res.status(500).json({ message: 'Internal server error' })
   }
 
 })
+
 
 
 
