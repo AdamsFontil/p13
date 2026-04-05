@@ -29,4 +29,34 @@ router.post('/', async (req, res) => {
   }
 });
 
+router.get('/', async (req, res) => {
+  const readings = await UserReadingList.findAll()
+  console.log('WHAT IS READINGS', readings);
+  res.json(readings)
+})
+
+router.put('/:id', async (req, res) => {
+  console.log('CHANGING THINGS');
+  const { id } = req.params
+  if (req.body.read === undefined) {
+    return res.status(400).json({ error: "Missing 'read' field in request body" });
+  }
+  try {
+    const reading = await UserReadingList.findByPk(id)
+    if (!reading) {
+      return res.status(404).json({ error: 'Reading not found, issue with finding entry from the provided ID'})
+    }
+    console.log('READING BEFORE', reading.dataValues);
+    reading.read = req.body.read
+    await reading.save()
+    console.log('READING AFTER', reading.dataValues);
+    return res.status(201).json(reading)
+  } catch (error) {
+    return res.status(500).json({ message: 'Internal server error' })
+  }
+
+})
+
+
+
 module.exports = router;

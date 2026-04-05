@@ -1,3 +1,7 @@
+GET http://localhost:3001/api/readinglists
+
+
+
 ###
 POST http://localhost:3001/api/readinglists
 Content-Type: application/json
@@ -6,4 +10,13 @@ Content-Type: application/json
 
   "userId": 1,
   "blogId": 2
+}
+
+
+###
+PUT http://localhost:3001/api/readinglists/1
+Content-Type: application/json
+
+{
+  "read": true
 }
