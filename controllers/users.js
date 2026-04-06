@@ -28,6 +28,17 @@ router.get('/', async (req, res) => {
 })
 
 router.get('/:id', async (req, res) => {
+  const blogWhere = {}
+  const throughWhere = {}
+
+  if (req.query.read) {
+    throughWhere.read = req.query.read === "true"
+  }
+  if (req.query.search) {
+    blogWhere.content = {
+      [Op.substring]: req.query.search
+    }
+  }
   const user = await User.findByPk(req.params.id, {
     attributes: ['name', 'username'],
     include: [
@@ -35,11 +46,13 @@ router.get('/:id', async (req, res) => {
         model: Blog,
         attributes: { exclude: ['userId', 'createdAt', 'updatedAt'] },
         as: 'reading_list',
+        where: blogWhere,
         through: {
-          attributes: ['read', 'id']
+          attributes: ['read', 'id'],
+          where: throughWhere
         },
       }
-    ]
+    ],
   })
 
   if (user) {
@@ -48,6 +61,8 @@ router.get('/:id', async (req, res) => {
     res.status(404).end()
   }
 })
+
+
 
 router.post('/', async (req, res, next) => {
   const { username, name, password } = req.body
