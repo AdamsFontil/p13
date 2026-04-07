@@ -7,3 +7,8 @@ GET http://localhost:3001/
 
 ###
 POST http://localhost:3001/api/reset
+
+
+###
+DELETE http://localhost:3001/api/logout
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3QyQGV4YW1wbGUuY29tIiwiaWQiOjIsImlhdCI6MTc3NTU5ODI2Nn0.6h1L4LlF4tFcSNrpG8gYOrvJT6N7I2bj4jjHke18bAA
