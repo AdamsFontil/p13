@@ -1,4 +1,4 @@
-GET http://localhost:3001/api/users
+GET http://localhost:3001/api/users/2
 
 ###
 PUT http://localhost:3001/api/users/testing_Hash
@@ -17,5 +17,6 @@ Content-Type: application/json
 {
   "name": "postgresUser2",
   "username": "docker2@gmai.com",
-  "password": "docker2"
+  "password": "docker2",
+  "disabled": true
 }

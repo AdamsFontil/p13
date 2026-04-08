@@ -2,6 +2,7 @@ const bcrypt = require('bcrypt')
 const router = require('express').Router()
 const { User, Blog } = require('../models')
 const tokenExtractor = require('../util/middleware')
+const { Op } = require('sequelize')
 
 
 router.get('/', async (req, res) => {

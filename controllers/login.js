@@ -38,9 +38,6 @@ router.post('/', async (request, response) => {
 
 
   const token = jwt.sign(userForToken, SECRET)
-  console.log('WHAT IS TOKEN', token);
-  console.log('WHAT IS userForToken', userForToken);
-  console.log('WHAT IS USER', user);
 
   const session = await Session.create({ userId: user.id, authToken: token })
   console.log('what is Session', session);
