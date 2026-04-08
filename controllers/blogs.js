@@ -26,10 +26,9 @@ router.get('/', async (req, res) => {
 
   router.post('/', tokenExtractor, async (req, res) => {
   try {
-    const user = await User.findByPk(req.decodedToken.id)
       const blog = await Blog.create({
       ...req.body, updatedAt: new Date(),
-      userId: user.id
+      userId: req.targetSession.userId
       })
       res.json(blog)
   } catch(error) {
@@ -63,10 +62,8 @@ router.put('/:id', blogFinder, async (req, res) => {
 router.delete('/:id',tokenExtractor, blogFinder, async (req, res) => {
   console.log('deleting---', req.blog.toJSON());
   try {
-    const user = await User.findByPk(req.decodedToken.id)
-    console.log('USER FOUND---', user.id);
-    console.log('BLOG ID', req.blog.userId);
-    if (user.id === req.blog.userId) {
+
+    if (req.targetSession.userId=== req.blog.userId) {
       console.log('MATCH FOUND--- DELETING BLOG NOW');
       await req.blog.destroy()
       res.status(204).end()

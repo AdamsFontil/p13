@@ -36,7 +36,6 @@ router.get('/', async (req, res) => {
 })
 
 router.put('/:id', tokenExtractor, async (req, res) => {
-  console.log('CHANGING THINGS');
   const { id } = req.params
   if (req.body.read === undefined) {
     return res.status(400).json({ error: "Missing 'read' field in request body" });
@@ -46,7 +45,7 @@ router.put('/:id', tokenExtractor, async (req, res) => {
     if (!reading) {
       return res.status(404).json({ error: 'Reading not found, issue with finding entry from the provided ID'})
     }
-    if (reading.userId !== req.decodedToken.id) {
+    if (reading.userId !== req.targetSessions.userId) {
       console.log('r.userid', reading.userId);
       console.log('req.decodedToken.id', req.decodedToken.id);
       return res.status(400).json({ error: 'Only the creator of reading list can modify it'})
