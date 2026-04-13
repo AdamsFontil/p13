@@ -6,8 +6,8 @@ const Session = require('./session')
 User.hasMany(Blog)
 Blog.belongsTo(User)
 
-User.belongsToMany(Blog, { through: UserReadingList, as: 'reading_list' })
-Blog.belongsToMany(User, { through: UserReadingList, as: 'users_marked' })
+User.belongsToMany(Blog, { through: UserReadingList, as: 'readings' })
+Blog.belongsToMany(User, { through: UserReadingList, as: 'users_saved' })
 
 
 User.hasMany(Session)

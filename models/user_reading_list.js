@@ -32,7 +32,7 @@ UserReadingList.init({
   sequelize,
   underscored: true,
   timestamps: false,
-  modelName: 'user_reading_list'
+  modelName: 'reading_list'
 })
 
 

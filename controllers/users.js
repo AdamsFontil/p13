@@ -14,7 +14,7 @@ router.get('/', async (req, res) => {
     },
       {
         model: Blog,
-        as: 'reading_list',
+        as: 'readings',
         attributes: { exclude: [''] },
         through: {
           attributes: ['read', 'id', 'blog_id', 'user_id']
@@ -47,12 +47,13 @@ router.get('/:id', async (req, res) => {
       {
         model: Blog,
         attributes: { exclude: ['userId', 'createdAt', 'updatedAt'] },
-        as: 'reading_list',
+        as: 'readings',
         where: blogWhere,
         through: {
           attributes: ['read', 'id'],
           where: throughWhere
         },
+        required: false
       }
     ],
   })
