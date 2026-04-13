@@ -79,6 +79,7 @@ router.put('/:id', tokenExtractor, async (req, res) => {
     console.log('READING AFTER', reading.dataValues);
     return res.status(200).json(reading)
   } catch (error) {
+    console.error('PUT ERROR READLIST ErrOr:', error)
     return res.status(500).json({ message: 'Internal server error' })
   }
 

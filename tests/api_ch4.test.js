@@ -388,7 +388,7 @@ describe('Integration: Reading Lists and Sessions', () => {
     const response = await axios.post(`${baseUrl}/readinglists`, readingListEntry)
 
     assert.ok([200, 201].includes(response.status))
-    assert.strictEqual(response.data.blog_id, integrationBlogId)
+    assert.strictEqual(response.data.blogId, integrationBlogId) //changed from response.data.blog_id
     integrationReadingListId = response.data.id
   })
 
