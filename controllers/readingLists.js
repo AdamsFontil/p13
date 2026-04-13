@@ -67,10 +67,11 @@ router.put('/:id', tokenExtractor, async (req, res) => {
     if (!reading) {
       return res.status(404).json({ error: 'Reading not found, issue with finding entry from the provided ID'})
     }
-    if (reading.userId !== req.targetSessions.userId) {
-      console.log('r.userid', reading.userId);
-      console.log('req.decodedToken.id', req.decodedToken.id);
-      return res.status(400).json({ error: 'Only the creator of reading list can modify it'})
+    if (reading.userId !== req.targetSession.userId) {
+      console.log('r.userid---', reading.userId);
+      console.log('req.decodedToken.id---', req.decodedToken.id);
+      console.log('req.targetSession.userId---', req.targetSession.userId);
+      return res.status(401).json({ error: 'Only the creator of reading list can modify it'})
     }
     console.log('READING BEFORE', reading.dataValues);
     reading.read = req.body.read
