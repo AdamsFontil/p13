@@ -7,17 +7,39 @@ const tokenExtractor = require('../util/middleware')
 
 router.post('/', async (req, res) => {
   const { userId, blogId } = req.body
+
+  if (userId === undefined) {
+    return res.status(400).json({ error: 'userId is required' })
+  }
+  if (blogId === undefined) {
+    return res.status(400).json({ error: 'blogId is required' })
+  }
+
   try {
     const userExist = await User.findByPk(userId)
     const blogExist = await Blog.findByPk(blogId)
 
     if (userExist && blogExist) {
       console.log('BOTH USER AND BLOG EXIST');
-        const user_readings = await UserReadingList.create({
+    const alreadyExists = await UserReadingList.findOne({
+      where: {
+        userId: userId,
+        blogId: blogId
+      }
+    })
+
+      if (alreadyExists) {
+      console.log('DID NOT ADD TO READING LIST');
+      return res.status(400).json({ error: 'This blog is already in the user\'s reading list' })
+    } else {
+      const user_readings = await UserReadingList.create({
           ...req.body
         })
-      console.log('USER READINGS ADDED---',user_readings );
-      res.json(user_readings)
+
+      console.log('DID ADD TO READING LIST---', user_readings);
+        console.log('RAW RESPONSE:', JSON.stringify(user_readings.toJSON(), null, 2))
+      res.status(201).json(user_readings)
+    }
     } else if (!userExist) {
       return res.status(404).json({ error: `The USERID: --${userId}-- does not exist`})
     } else if (!blogExist) {

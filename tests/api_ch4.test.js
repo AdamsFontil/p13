@@ -30,7 +30,7 @@ before(async () => {
   createdBlogId = blogResponse.data.id
 })
 
-describe('Reading Lists API', () => {
+describe.only('Reading Lists API', () => {
   it('can add a blog to reading list', async () => {
     const readingListEntry = {
       blogId: createdBlogId,
@@ -40,8 +40,8 @@ describe('Reading Lists API', () => {
     const response = await axios.post(`${baseUrl}/readinglists`, readingListEntry)
 
     assert.ok([200, 201].includes(response.status))
-    assert.strictEqual(response.data.blog_id, createdBlogId)
-    assert.strictEqual(response.data.user_id, testData.users[0].id)
+    assert.strictEqual(response.data.blogId, createdBlogId)  //changed to camelCase
+    assert.strictEqual(response.data.userId, testData.users[0].id) //changed to camelCase
     assert.strictEqual(response.data.read, false)
   })
 
