@@ -7,12 +7,12 @@ const tokenExtractor = async (req, res, next) => {
   if (authorization && authorization.toLowerCase().startsWith('bearer ')) {
     try {
       req.decodedToken = jwt.verify(authorization.substring(7), SECRET)
-        req.targetSession = await Session.findOne({
+      req.targetSession = await Session.findOne({
         where: { auth_token: authorization.substring(7) }
       })
       console.log('found target Session???', req.targetSession);
       if (!req.targetSession) {
-        return res.status(404).json({ error: 'Session not found'})
+        return res.status(401).json({ error: 'session expired or invalid' })
       }
     } catch{
       return res.status(401).json({ error: 'token invalid' })

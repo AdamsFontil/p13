@@ -23,7 +23,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InNlY
 ###
 POST http://localhost:3001/api/blogs/
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3QxQGV4YW1wbGUuY29tIiwiaWQiOjEsImlhdCI6MTc3NTYwNzg3N30.tQxyJZPGPSD5qri8X0IADxFA57gvH_HLiHvraVD7x6k
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InNlc3Npb25AZXhhbXBsZS5jb20iLCJpZCI6MywiaWF0IjoxNzc2MTA3OTc3fQ.LxpoQAYiXeY0xE4p87zNgIjkSsslklwje_QCgmbyejM
 
 {
   "title": "read status is true",

@@ -11,4 +11,4 @@ POST http://localhost:3001/api/reset
 
 ###
 DELETE http://localhost:3001/api/logout
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3QxQGV4YW1wbGUuY29tIiwiaWQiOjEsImlhdCI6MTc3NTU5ODI2Nn0.x2n8Rl0ZpvyzbmLH8cLEBK37S1GGP4R4J2Fjf8ibOiM
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InNlc3Npb25AZXhhbXBsZS5jb20iLCJpZCI6MywiaWF0IjoxNzc2MTA3OTc3fQ.LxpoQAYiXeY0xE4p87zNgIjkSsslklwje_QCgmbyejM
